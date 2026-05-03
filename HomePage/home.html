@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Homepage</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Mulish:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Our stylesheet -->
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- ========================================
+       NAVIGATION BAR
+  ========================================= -->
+  <nav class="navbar">
+    <div class="nav-logo">◈ MySpace</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#videos">Videos</a></li>
+    </ul>
+    <a href="login.html" class="nav-btn">Login</a>
+  </nav>
+
+
+  <!-- ========================================
+       HERO SECTION (top banner)
+  ========================================= -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <p class="hero-tag">✦ Your personal gallery</p>
+      <h1>Share your<br /><span class="highlight">moments.</span></h1>
+      <p class="hero-sub">Upload photos and videos. Organise your memories beautifully.</p>
+      <div class="hero-buttons">
+        <!-- Clicking these scrolls down to the sections -->
+        <a href="#photos" class="btn-main">View Photos</a>
+        <a href="#videos" class="btn-ghost">Watch Videos</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- Decorative preview cards stacked -->
+      <div class="preview-stack">
+        <div class="preview-card pc1">📷</div>
+        <div class="preview-card pc2">🎬</div>
+        <div class="preview-card pc3">🖼️</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       PHOTO SECTION
+       - Shows a gallery grid
+       - Upload button opens a file picker
+  ========================================= -->
+  <section class="section" id="photos">
+    <div class="section-header">
+      <div>
+        <h2>📷 Photo Gallery</h2>
+        <p>Your uploaded photos appear here</p>
+      </div>
+      <!-- This button triggers the hidden file input below -->
+      <button class="upload-btn" onclick="document.getElementById('photo-input').click()">
+        + Add Photo
+      </button>
+    </div>
+
+    <!--
+      Hidden file input.
+      'accept' means only image files are allowed.
+      'multiple' means user can pick more than one.
+      When a file is chosen, our JS function runs.
+    -->
+    <input
+      type="file"
+      id="photo-input"
+      accept="image/*"
+      multiple
+      style="display:none"
+      onchange="addPhotos(this)"
+    />
+
+    <!-- Photos will appear inside this grid -->
+    <div class="photo-grid" id="photo-grid">
+
+      <!-- Empty state message shown when no photos exist -->
+      <div class="empty-state" id="photo-empty">
+        <div class="empty-icon">🖼️</div>
+        <p>No photos yet. Click <strong>+ Add Photo</strong> to upload!</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       VIDEO SECTION
+       - Shows uploaded or embedded videos
+       - Two ways to add: upload a file OR paste a YouTube link
+  ========================================= -->
+  <section class="section dark-section" id="videos">
+    <div class="section-header">
+      <div>
+        <h2>🎬 Video Gallery</h2>
+        <p>Upload your own videos or add YouTube links</p>
+      </div>
+
+      <!-- Button opens the add-video panel -->
+      <button class="upload-btn" onclick="toggleVideoPanel()">
+        + Add Video
+      </button>
+    </div>
+
+    <!-- Add Video Panel (hidden by default, toggled by button above) -->
+    <div class="video-panel" id="video-panel">
+
+      <!-- Tab buttons to switch between Upload / YouTube -->
+      <div class="panel-tabs">
+        <button class="panel-tab active" onclick="switchTab('upload')">Upload File</button>
+        <button class="panel-tab" onclick="switchTab('youtube')">YouTube Link</button>
+      </div>
+
+      <!-- Upload file tab -->
+      <div id="tab-upload">
+        <label class="file-drop" onclick="document.getElementById('video-input').click()">
+          <span>🎥</span>
+          <p>Click to choose a video file</p>
+          <small>MP4, WebM, OGG supported</small>
+        </label>
+        <input
+          type="file"
+          id="video-input"
+          accept="video/*"
+          style="display:none"
+          onchange="addVideoFile(this)"
+        />
+      </div>
+
+      <!-- YouTube link tab (hidden by default) -->
+      <div id="tab-youtube" style="display:none">
+        <div class="yt-row">
+          <input
+            type="text"
+            id="yt-input"
+            class="yt-text"
+            placeholder="Paste YouTube URL here... e.g. https://youtube.com/watch?v=xxxxx"
+          />
+          <button class="btn-main" onclick="addYouTubeVideo()">Add</button>
+        </div>
+        <p class="hint">Tip: Copy the URL from your browser while watching a YouTube video.</p>
+      </div>
+
+    </div>
+
+    <!-- Videos will appear inside this grid -->
+    <div class="video-grid" id="video-grid">
+
+      <!-- Empty state shown when no videos exist -->
+      <div class="empty-state" id="video-empty">
+        <div class="empty-icon">🎬</div>
+        <p>No videos yet. Click <strong>+ Add Video</strong> to get started!</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       FOOTER
+  ========================================= -->
+  <footer class="footer">
+    <p>◈ MySpace &nbsp;·&nbsp; Made with ♥</p>
+  </footer>
+
+
+  <!-- ========================================
+       TOAST NOTIFICATION
+       (small popup message at bottom)
+  ========================================= -->
+  <div class="toast" id="toast"></div>
+
+
+  <!-- Link to our JavaScript file (always at the bottom of body) -->
+  <script src="home.js"></script>
+
+</body>
+</html>
