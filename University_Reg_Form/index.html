@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>University Enrollment | Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="register-wrapper">
+        <div class="register-container">
+            <!-- Decorative header -->
+            <div class="form-header">
+                <div class="uni-badge">
+                    <span>🎓</span>
+                </div>
+                <h1>University Course Enrollment</h1>
+                <p>Spring Semester 2026 | Register for your courses</p>
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active" data-step="1">1. Personal Info</div>
+                <div class="step" data-step="2">2. Academic Details</div>
+                <div class="step" data-step="3">3. Course Selection</div>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registrationForm" novalidate>
+                <!-- STEP 1: PERSONAL INFORMATION -->
+                <div class="form-step" id="step1">
+                    <h2 class="section-title">📋 Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="e.g., John Michael Doe">
+                            <div class="error-msg" id="fullNameError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth">
+                            <div class="error-msg" id="dateOfBirthError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="student@university.edu">
+                            <div class="error-msg" id="emailError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+                            <div class="error-msg" id="phoneError"></div>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="address">Address <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" placeholder="Street, City, Postal Code">
+                            <div class="error-msg" id="addressError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="gender">Gender <span class="required">*</span></label>
+                            <select id="gender" name="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not">Prefer not to say</option>
+                            </select>
+                            <div class="error-msg" id="genderError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="nationality">Nationality <span class="required">*</span></label>
+                            <input type="text" id="nationality" name="nationality" placeholder="e.g., American, Indian, British">
+                            <div class="error-msg" id="nationalityError"></div>
+                        </div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn-next" data-next="2">Next: Academic Details →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: ACADEMIC DETAILS -->
+                <div class="form-step" id="step2" style="display: none;">
+                    <h2 class="section-title">📚 Academic Information</h2>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="studentId">Student ID <span class="required">*</span></label>
+                            <input type="text" id="studentId" name="studentId" placeholder="e.g., S20240001">
+                            <div class="error-msg" id="studentIdError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="department">Department <span class="required">*</span></label>
+                            <select id="department" name="department">
+                                <option value="">Select Department</option>
+                                <option value="cs">Computer Science</option>
+                                <option value="eng">Engineering</option>
+                                <option value="bus">Business Administration</option>
+                                <option value="math">Mathematics</option>
+                                <option value="phy">Physics</option>
+                                <option value="chem">Chemistry</option>
+                                <option value="bio">Biology</option>
+                                <option value="eco">Economics</option>
+                            </select>
+                            <div class="error-msg" id="departmentError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="semester">Semester <span class="required">*</span></label>
+                            <select id="semester" name="semester">
+                                <option value="">Select Semester</option>
+                                <option value="1">1st Semester (Fall)</option>
+                                <option value="2">2nd Semester (Spring)</option>
+                                <option value="3">3rd Semester (Summer)</option>
+                                <option value="4">4th Semester (Fall)</option>
+                                <option value="5">5th Semester (Spring)</option>
+                                <option value="6">6th Semester (Summer)</option>
+                                <option value="7">7th Semester (Fall)</option>
+                                <option value="8">8th Semester (Spring)</option>
+                            </select>
+                            <div class="error-msg" id="semesterError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="academicYear">Academic Year <span class="required">*</span></label>
+                            <select id="academicYear" name="academicYear">
+                                <option value="">Select Year</option>
+                                <option value="2024-2025">2024 - 2025</option>
+                                <option value="2025-2026">2025 - 2026</option>
+                                <option value="2026-2027">2026 - 2027</option>
+                            </select>
+                            <div class="error-msg" id="academicYearError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="gpa">Previous GPA <span class="required">*</span></label>
+                            <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4" placeholder="0.00 - 4.00">
+                            <div class="error-msg" id="gpaError"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="creditsCompleted">Credits Completed</label>
+                            <input type="number" id="creditsCompleted" name="creditsCompleted" min="0" max="200" placeholder="e.g., 45">
+                            <div class="error-msg" id="creditsCompletedError"></div>
+                        </div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn-prev" data-prev="1">← Back</button>
+                        <button type="button" class="btn-next" data-next="3">Next: Select Courses →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: COURSE SELECTION -->
+                <div class="form-step" id="step3" style="display: none;">
+                    <h2 class="section-title">📖 Course Registration</h2>
+                    <div class="courses-container">
+                        <div class="courses-info">
+                            <p>Select the courses you wish to enroll in for the semester. <br>
+                            <strong>Minimum: 3 courses | Maximum: 6 courses</strong></p>
+                        </div>
+                        <div class="courses-grid" id="coursesGrid">
+                            <!-- Courses will be dynamically loaded via JS -->
+                        </div>
+                        <div class="error-msg" id="coursesError"></div>
+                        <div class="selected-courses-info" id="selectedCoursesInfo"></div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="btn-prev" data-prev="2">← Back</button>
+                        <button type="submit" class="btn-submit" id="submitBtn">✓ Submit Registration</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success Modal -->
+            <div id="successModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-icon">✅</div>
+                    <h2>Registration Successful!</h2>
+                    <p>Your application has been submitted successfully.</p>
+                    <div id="summaryData" class="summary-box"></div>
+                    <button class="btn-close-modal" id="closeModalBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
