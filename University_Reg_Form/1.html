@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Student Course Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="1.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="header-inner">
+    <div class="uni-seal">🎓</div>
+    <div class="header-text">
+      <h1>Semester Course Registration</h1>
+      <p>Academic Enrollment Portal &nbsp;·&nbsp; 2024–25</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── Progress Indicator ── -->
+  <div class="progress-wrap">
+    <div class="progress-step active" id="step1" onclick="goStep(1)">
+      <span class="step-num">01</span>Personal Info
+    </div>
+    <div class="progress-step" id="step2" onclick="goStep(2)">
+      <span class="step-num">02</span>Academic Info
+    </div>
+    <div class="progress-step" id="step3" onclick="goStep(3)">
+      <span class="step-num">03</span>Course Selection
+    </div>
+    <div class="progress-step" id="step4" onclick="goStep(4)">
+      <span class="step-num">04</span>Account &amp; Review
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PANEL 1 — PERSONAL INFORMATION
+  ══════════════════════════════════════════ -->
+  <div class="form-panel active" id="panel1">
+    <div class="panel-title"><span>👤</span> Personal Information</div>
+    <div class="panel-subtitle">Enter your full legal name and contact details exactly as they appear on your official documents.</div>
+
+    <div class="card">
+
+      <!-- Photo Upload -->
+      <div class="field" style="margin-bottom:24px">
+        <label>Profile Photo</label>
+        <div class="photo-upload" onclick="document.getElementById('photoInput').click()">
+          <div class="photo-preview" id="photoPreview">📷</div>
+          <div class="photo-text">
+            <p>Upload your photo</p>
+            <span>JPG or PNG · Max 2 MB · Passport-style preferred</span>
+          </div>
+        </div>
+        <input type="file" id="photoInput" accept="image/*" onchange="previewPhoto(this)"/>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="e.g. Aryan" oninput="validate('firstName')"/>
+          <span class="err-msg" id="firstNameErr"></span>
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="e.g. Rahman" oninput="validate('lastName')"/>
+          <span class="err-msg" id="lastNameErr"></span>
+        </div>
+        <div class="field">
+          <label>Father's Name <span class="req">*</span></label>
+          <input type="text" id="fatherName" placeholder="Full name" oninput="validate('fatherName')"/>
+          <span class="err-msg" id="fatherNameErr"></span>
+        </div>
+        <div class="field">
+          <label>Mother's Name <span class="req">*</span></label>
+          <input type="text" id="motherName" placeholder="Full name" oninput="validate('motherName')"/>
+          <span class="err-msg" id="motherNameErr"></span>
+        </div>
+        <div class="field">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob" oninput="validate('dob')"/>
+          <span class="err-msg" id="dobErr"></span>
+        </div>
+        <div class="field">
+          <label>Gender <span class="req">*</span></label>
+          <select id="gender" onchange="validate('gender')">
+            <option value="">— Select —</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Non-binary</option>
+            <option>Prefer not to say</option>
+          </select>
+          <span class="err-msg" id="genderErr"></span>
+        </div>
+        <div class="field">
+          <label>National ID / Passport No. <span class="req">*</span></label>
+          <input type="text" id="nationalId" placeholder="e.g. 1234567890123" oninput="validate('nationalId')"/>
+          <span class="err-msg" id="nationalIdErr"></span>
+        </div>
+        <div class="field">
+          <label>Nationality <span class="req">*</span></label>
+          <select id="nationality" onchange="validate('nationality')">
+            <option value="">— Select —</option>
+            <option>Bangladeshi</option>
+            <option>Indian</option>
+            <option>Pakistani</option>
+            <option>American</option>
+            <option>British</option>
+            <option>Other</option>
+          </select>
+          <span class="err-msg" id="nationalityErr"></span>
+        </div>
+      </div>
+
+      <div class="section-divider">Contact Details</div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="you@example.com" oninput="validate('email')"/>
+          <span class="err-msg" id="emailErr"></span>
+        </div>
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="+880 1XXXXXXXXX" oninput="validate('phone')"/>
+          <span class="err-msg" id="phoneErr"></span>
+        </div>
+        <div class="field span-2">
+          <label>Present Address <span class="req">*</span></label>
+          <textarea id="presentAddress" placeholder="House no, Road, Area, City" oninput="validate('presentAddress')"></textarea>
+          <span class="err-msg" id="presentAddressErr"></span>
+        </div>
+        <div class="field span-2">
+          <label>Permanent Address</label>
+          <textarea id="permanentAddress" placeholder="Leave blank if same as present address"></textarea>
+        </div>
+      </div>
+
+    </div><!-- /card -->
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="nextStep(1)">Continue →</button>
+    </div>
+  </div><!-- /panel1 -->
+
+  <!-- ══════════════════════════════════════════
+       PANEL 2 — ACADEMIC INFORMATION
+  ══════════════════════════════════════════ -->
+  <div class="form-panel" id="panel2">
+    <div class="panel-title"><span>🏛</span> Academic Information</div>
+    <div class="panel-subtitle">Provide your student registration details and current academic standing.</div>
+
+    <div class="card">
+      <div class="grid-2">
+        <div class="field">
+          <label>Student ID <span class="req">*</span></label>
+          <input type="text" id="studentId" placeholder="e.g. STU-2024-0042" oninput="validate('studentId')"/>
+          <span class="err-msg" id="studentIdErr"></span>
+        </div>
+        <div class="field">
+          <label>Roll Number <span class="req">*</span></label>
+          <input type="text" id="rollNo" placeholder="e.g. 20240042" oninput="validate('rollNo')"/>
+          <span class="err-msg" id="rollNoErr"></span>
+        </div>
+        <div class="field">
+          <label>Department / Faculty <span class="req">*</span></label>
+          <select id="department" onchange="validate('department'); updateCourses()">
+            <option value="">— Select —</option>
+            <option>Computer Science &amp; Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Business Administration</option>
+            <option>English Literature</option>
+            <option>Law &amp; Justice</option>
+            <option>Pharmacy</option>
+          </select>
+          <span class="err-msg" id="departmentErr"></span>
+        </div>
+        <div class="field">
+          <label>Program / Degree <span class="req">*</span></label>
+          <select id="program" onchange="validate('program')">
+            <option value="">— Select —</option>
+            <option>B.Sc. (Hons)</option>
+            <option>B.A. (Hons)</option>
+            <option>BBA</option>
+            <option>LLB</option>
+            <option>M.Sc.</option>
+            <option>MBA</option>
+            <option>Ph.D.</option>
+          </select>
+          <span class="err-msg" id="programErr"></span>
+        </div>
+        <div class="field">
+          <label>Year of Study <span class="req">*</span></label>
+          <select id="yearOfStudy" onchange="validate('yearOfStudy')">
+            <option value="">— Select —</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+            <option>5th Year</option>
+          </select>
+          <span class="err-msg" id="yearOfStudyErr"></span>
+        </div>
+        <div class="field">
+          <label>Semester <span class="req">*</span></label>
+          <select id="semester" onchange="validate('semester')">
+            <option value="">— Select —</option>
+            <option>Spring 2025</option>
+            <option>Summer 2025</option>
+            <option>Fall 2025</option>
+          </select>
+          <span class="err-msg" id="semesterErr"></span>
+        </div>
+        <div class="field">
+          <label>Current CGPA</label>
+          <input type="number" id="cgpa" placeholder="0.00 – 4.00" min="0" max="4" step="0.01"/>
+          <span class="err-msg" id="cgpaErr"></span>
+        </div>
+        <div class="field">
+          <label>Enrollment Type <span class="req">*</span></label>
+          <select id="enrollType" onchange="validate('enrollType')">
+            <option value="">— Select —</option>
+            <option>Regular</option>
+            <option>Transfer</option>
+            <option>Exchange</option>
+            <option>Visiting</option>
+          </select>
+          <span class="err-msg" id="enrollTypeErr"></span>
+        </div>
+      </div>
+
+      <div class="section-divider">Guardian Information</div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Guardian Name <span class="req">*</span></label>
+          <input type="text" id="guardianName" placeholder="Full name" oninput="validate('guardianName')"/>
+          <span class="err-msg" id="guardianNameErr"></span>
+        </div>
+        <div class="field">
+          <label>Guardian Phone <span class="req">*</span></label>
+          <input type="tel" id="guardianPhone" placeholder="+880 1XXXXXXXXX" oninput="validate('guardianPhone')"/>
+          <span class="err-msg" id="guardianPhoneErr"></span>
+        </div>
+        <div class="field">
+          <label>Relation to Guardian <span class="req">*</span></label>
+          <select id="guardianRelation" onchange="validate('guardianRelation')">
+            <option value="">— Select —</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Sibling</option>
+            <option>Spouse</option>
+            <option>Other</option>
+          </select>
+          <span class="err-msg" id="guardianRelationErr"></span>
+        </div>
+        <div class="field">
+          <label>Special Needs / Disability</label>
+          <select id="disability">
+            <option value="">None</option>
+            <option>Visual Impairment</option>
+            <option>Hearing Impairment</option>
+            <option>Motor Disability</option>
+            <option>Learning Disability</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+    </div><!-- /card -->
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
+    </div>
+  </div><!-- /panel2 -->
+
+  <!-- ══════════════════════════════════════════
+       PANEL 3 — COURSE SELECTION
+  ══════════════════════════════════════════ -->
+  <div class="form-panel" id="panel3">
+    <div class="panel-title"><span>📚</span> Course Selection</div>
+    <div class="panel-subtitle">Select the courses you wish to enroll in for the upcoming semester. Min 9 credits, Max 21 credits.</div>
+
+    <div class="card">
+
+      <!-- Timing -->
+      <div class="field" style="margin-bottom:18px">
+        <label>Preferred Class Timing <span class="req">*</span></label>
+        <div class="radio-group" id="timingGroup">
+          <label class="radio-btn" onclick="selectRadio(this,'timing')">
+            <input type="radio" name="timing" value="Morning"/>☀️ Morning (8AM–12PM)
+          </label>
+          <label class="radio-btn" onclick="selectRadio(this,'timing')">
+            <input type="radio" name="timing" value="Afternoon"/>🌤 Afternoon (12PM–5PM)
+          </label>
+          <label class="radio-btn" onclick="selectRadio(this,'timing')">
+            <input type="radio" name="timing" value="Evening"/>🌙 Evening (5PM–9PM)
+          </label>
+        </div>
+        <span class="err-msg" id="timingErr"></span>
+      </div>
+
+      <!-- Mode -->
+      <div class="field" style="margin-bottom:18px">
+        <label>Preferred Learning Mode <span class="req">*</span></label>
+        <div class="radio-group" id="modeGroup">
+          <label class="radio-btn" onclick="selectRadio(this,'mode')">
+            <input type="radio" name="mode" value="On-campus"/>🏛 On-campus
+          </label>
+          <label class="radio-btn" onclick="selectRadio(this,'mode')">
+            <input type="radio" name="mode" value="Online"/>💻 Online
+          </label>
+          <label class="radio-btn" onclick="selectRadio(this,'mode')">
+            <input type="radio" name="mode" value="Hybrid"/>🔀 Hybrid
+          </label>
+        </div>
+        <span class="err-msg" id="modeErr"></span>
+      </div>
+
+      <!-- Courses -->
+      <div class="field">
+        <label>Available Courses <span class="req">*</span></label>
+        <div class="courses-grid" id="coursesGrid">
+          <!-- Populated by script.js -->
+        </div>
+        <div class="credit-info">
+          <span>Total Credits Selected</span>
+          <strong id="totalCredits">0</strong>
+          <span id="creditStatus" style="font-size:12px;color:var(--text-muted)">Select 9–21 credits</span>
+        </div>
+        <span class="err-msg" id="courseError"></span>
+      </div>
+
+    </div><!-- /card -->
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+    </div>
+  </div><!-- /panel3 -->
+
+  <!-- ══════════════════════════════════════════
+       PANEL 4 — ACCOUNT SETUP & REVIEW
+  ══════════════════════════════════════════ -->
+  <div class="form-panel" id="panel4">
+    <div class="panel-title"><span>🔐</span> Account Setup &amp; Review</div>
+    <div class="panel-subtitle">Create your student portal credentials and confirm all information before submission.</div>
+
+    <div class="card">
+      <div class="grid-2">
+        <div class="field">
+          <label>Username <span class="req">*</span></label>
+          <input type="text" id="username" placeholder="min 6 chars, alphanumeric" oninput="validate('username')"/>
+          <span class="err-msg" id="usernameErr"></span>
+        </div>
+        <div class="field">
+          <label>University Email <span class="req">*</span></label>
+          <input type="email" id="uniEmail" placeholder="yourname@university.edu" oninput="validate('uniEmail')"/>
+          <span class="err-msg" id="uniEmailErr"></span>
+        </div>
+        <div class="field">
+          <label>Password <span class="req">*</span></label>
+          <div class="pw-wrap">
+            <input type="password" id="password" placeholder="Create a strong password"
+              oninput="validate('password'); updateStrength()"/>
+            <button class="pw-eye" type="button" onclick="togglePw('password',this)">👁</button>
+          </div>
+          <div class="strength-bar">
+            <div class="strength-seg" id="s1"></div>
+            <div class="strength-seg" id="s2"></div>
+            <div class="strength-seg" id="s3"></div>
+            <div class="strength-seg" id="s4"></div>
+          </div>
+          <span class="err-msg" id="passwordErr"></span>
+        </div>
+        <div class="field">
+          <label>Confirm Password <span class="req">*</span></label>
+          <div class="pw-wrap">
+            <input type="password" id="confirmPw" placeholder="Re-enter password" oninput="validate('confirmPw')"/>
+            <button class="pw-eye" type="button" onclick="togglePw('confirmPw',this)">👁</button>
+          </div>
+          <span class="err-msg" id="confirmPwErr"></span>
+        </div>
+      </div>
+
+      <div class="section-divider">Review Your Application</div>
+      <div id="reviewBlock"></div>
+
+      <div style="margin-top:20px; padding:16px; background:var(--cream); border-radius:var(--radius); border:1px solid var(--border);">
+        <label class="check-btn" onclick="toggleCheck(this,'agreeTerms')" id="termsLabel" style="border-radius:6px;">
+          <input type="checkbox" id="agreeTerms"/>
+          <span>I confirm all information is accurate and agree to the university's terms &amp; academic policies.</span>
+        </label>
+        <span class="err-msg" id="agreeTermsErr" style="margin-top:8px"></span>
+      </div>
+    </div><!-- /card -->
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="prevStep(4)">← Back</button>
+      <button class="btn btn-gold" onclick="submitForm()">Submit Registration ✓</button>
+    </div>
+  </div><!-- /panel4 -->
+
+  <!-- ══════════════════════════════════════════
+       SUCCESS SCREEN
+  ══════════════════════════════════════════ -->
+  <div class="form-panel" id="panelSuccess">
+    <div class="card success-screen">
+      <div class="success-icon">✓</div>
+      <h2>Registration Submitted!</h2>
+      <p>Your course registration has been received. Please keep your reference number for tracking.</p>
+      <div class="ref-box" id="refNumber">—</div>
+      <p style="font-size:13px;color:var(--text-muted)">A confirmation email will be sent to your registered email address within 24 hours.</p>
+      <button class="btn btn-primary" style="margin-top:24px" onclick="resetForm()">Register Another Student</button>
+    </div>
+  </div><!-- /panelSuccess -->
+
+</div><!-- /container -->
+
+<script src="1.js"></script>
+</body>
+</html>
