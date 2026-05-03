@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Sign Up – Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <!-- Animated background orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <main class="page-wrap">
+
+    <!-- Left panel – branding -->
+    <aside class="brand-panel">
+      <div class="brand-inner">
+        <div class="logo">
+          <span class="logo-mark">◈</span>
+          <span class="logo-name">NEXUS</span>
+        </div>
+        <h1 class="brand-headline">Where ideas<br /><em>come alive.</em></h1>
+        <p class="brand-sub">
+          Join a global community of creators, thinkers, and makers building
+          the future — one idea at a time.
+        </p>
+        <div class="brand-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right panel – auth card -->
+    <section class="auth-panel">
+      <div class="auth-card">
+
+        <!-- Tab switcher -->
+        <div class="tabs" role="tablist">
+          <button
+            class="tab active"
+            data-target="login"
+            role="tab"
+            aria-selected="true"
+          >Login</button>
+          <button
+            class="tab"
+            data-target="signup"
+            role="tab"
+            aria-selected="false"
+          >Sign Up</button>
+          <span class="tab-slider" id="tab-slider"></span>
+        </div>
+
+        <!-- ===== LOGIN FORM ===== -->
+        <form class="auth-form active" id="form-login" novalidate>
+          <div class="form-header">
+            <h2>Welcome back</h2>
+            <p>Sign in to your account to continue</p>
+          </div>
+
+          <div class="field" id="field-login-email">
+            <label for="login-email">Email address</label>
+            <div class="input-box">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 8l10 6 10-6"/>
+              </svg>
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+              />
+            </div>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field" id="field-login-password">
+            <label for="login-password">Password</label>
+            <div class="input-box">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+              />
+              <button type="button" class="eye-btn" data-target="login-password" aria-label="Toggle password">
+                <svg class="eye-icon eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                  <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                  <line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+                <svg class="eye-icon eye-on hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="row-between">
+            <label class="check-label">
+              <input type="checkbox" id="remember-me" />
+              <span class="check-box"></span>
+              Remember me
+            </label>
+            <a href="#" class="link-small">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+          <div class="divider"><span>or continue with</span></div>
+
+          <div class="social-row">
+            <button type="button" class="social-btn" aria-label="Google">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path fill="#EA4335" d="M5.27 9.76A7.08 7.08 0 0 1 12 4.9c1.69 0 3.22.6 4.41 1.57l3.29-3.3A11.95 11.95 0 0 0 12 1C8.13 1 4.77 3 2.75 6.02l2.52 3.74z"/>
+                <path fill="#34A853" d="M16.04 18.01A7.07 7.07 0 0 1 12 19.1c-2.98 0-5.53-1.85-6.6-4.5l-3.1 2.4C4.35 20.54 7.97 23 12 23c2.9 0 5.58-1.02 7.62-2.7l-3.58-2.29z"/>
+                <path fill="#FBBC05" d="M19.62 20.3C21.76 18.22 23 15.28 23 12c0-.77-.09-1.52-.23-2.25H12v4.26h6.18a5.44 5.44 0 0 1-2.1 3.41l3.54 2.88z"/>
+                <path fill="#4285F4" d="M5.4 14.6A7.1 7.1 0 0 1 4.9 12c0-.9.16-1.77.45-2.58L2.76 5.7A11.94 11.94 0 0 0 1 12c0 1.94.46 3.77 1.27 5.4L5.4 14.6z"/>
+              </svg>
+              Google
+            </button>
+            <button type="button" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.89 1.52 2.33 1.08 2.9.83.09-.64.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.7.115 2.5.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
+              </svg>
+              GitHub
+            </button>
+          </div>
+        </form>
+
+        <!-- ===== SIGNUP FORM ===== -->
+        <form class="auth-form" id="form-signup" novalidate>
+          <div class="form-header">
+            <h2>Create account</h2>
+            <p>Start your journey with Nexus today</p>
+          </div>
+
+          <div class="fields-row">
+            <div class="field" id="field-signup-first">
+              <label for="signup-first">First name</label>
+              <div class="input-box">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/>
+                </svg>
+                <input type="text" id="signup-first" name="first" placeholder="Jane" autocomplete="given-name" />
+              </div>
+              <span class="field-error" aria-live="polite"></span>
+            </div>
+
+            <div class="field" id="field-signup-last">
+              <label for="signup-last">Last name</label>
+              <div class="input-box">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/>
+                </svg>
+                <input type="text" id="signup-last" name="last" placeholder="Doe" autocomplete="family-name" />
+              </div>
+              <span class="field-error" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="field" id="field-signup-email">
+            <label for="signup-email">Email address</label>
+            <div class="input-box">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 8l10 6 10-6"/>
+              </svg>
+              <input type="email" id="signup-email" name="email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="field" id="field-signup-password">
+            <label for="signup-password">Password</label>
+            <div class="input-box">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input type="password" id="signup-password" name="password" placeholder="Min. 8 characters" autocomplete="new-password" />
+              <button type="button" class="eye-btn" data-target="signup-password" aria-label="Toggle password">
+                <svg class="eye-icon eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                  <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                  <line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+                <svg class="eye-icon eye-on hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <span class="field-error" aria-live="polite"></span>
+            <!-- Strength meter -->
+            <div class="strength-wrap">
+              <div class="strength-bar">
+                <div class="strength-fill" id="strength-fill"></div>
+              </div>
+              <span class="strength-text" id="strength-text"></span>
+            </div>
+          </div>
+
+          <div class="field" id="field-signup-confirm">
+            <label for="signup-confirm">Confirm password</label>
+            <div class="input-box">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input type="password" id="signup-confirm" name="confirm" placeholder="Repeat password" autocomplete="new-password" />
+            </div>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <label class="check-label">
+            <input type="checkbox" id="terms" />
+            <span class="check-box"></span>
+            I agree to the <a href="#" class="link-inline">Terms of Service</a> &amp; <a href="#" class="link-inline">Privacy Policy</a>
+          </label>
+          <span class="field-error" id="terms-error" aria-live="polite"></span>
+
+          <button type="submit" class="btn-primary">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </form>
+
+      </div><!-- /auth-card -->
+    </section>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="login.js"></script>
+</body>
+</html>
